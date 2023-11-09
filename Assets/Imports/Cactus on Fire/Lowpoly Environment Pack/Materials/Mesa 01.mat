@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Mesa 01
   m_Shader: {fileID: 4800000, guid: dc9855e4a457c754fa954151801a1170, type: 3}
   m_ShaderKeywords: 
@@ -20,6 +21,7 @@ Material:
     m_TexEnvs: []
     m_Floats: []
     m_Colors:
-    - _Down: {r: 0.89705884, g: 0.1863262, b: 0.06596022, a: 1}
-    - _Emission: {r: 0, g: 0.08088237, b: 0.21323532, a: 1}
-    - _Top: {r: 1, g: 0.6299189, b: 0.3455882, a: 1}
+    - _Down: {r: 0.3207547, g: 0.08371898, b: 0.08884274, a: 1}
+    - _Emission: {r: 0.4811321, g: 0, b: 0.086626865, a: 1}
+    - _Top: {r: 0.5754717, g: 0.46080098, b: 0.45965347, a: 1}
+  m_BuildTextureStacks: []
