@@ -595,6 +595,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     1: CLAYXELS_BUILTIN;CLAYXELS_RETOPO
+    7: CLAYXELS_BUILTIN;CLAYXELS_RETOPO
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
