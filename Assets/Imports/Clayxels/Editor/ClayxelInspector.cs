@@ -19,7 +19,7 @@ using Clayxels;
 
 namespace Clayxels{
 	[CustomEditor(typeof(ClayContainer))]
-	public class ClayxelInspector : Editor{
+	public class ClayxelInspector : UnityEditor.Editor{
 		static bool extrasPanel = false;
 		
 		public override void OnInspectorGUI(){
@@ -691,7 +691,7 @@ namespace Clayxels{
 	}
 
 	[CustomEditor(typeof(ClayObject)), CanEditMultipleObjects]
-	public class ClayObjectInspector : Editor{
+	public class ClayObjectInspector : UnityEditor.Editor{
 		public override void OnInspectorGUI(){
 			ClayObject clayObj = (ClayObject)this.targets[0];
 			ClayContainer clayContainer = clayObj.getClayContainer();

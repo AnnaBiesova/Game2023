@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a858769dfa1e040a20f60b3829bb3d, type: 3}
+  m_Name: LevelOrder
+  m_EditorClassIdentifier: 
+  debugLog: 0
+  hubSceneName: Choice_Game
+  levelToStartOnSecondLap: 1
+  randomizeSecondLapLevels: 0
+  _levelConfigs:
+  - {fileID: 11400000, guid: d066b60e3f3d9b647b3af51632e17927, type: 2}
+  - {fileID: 11400000, guid: 5fe8de520cee82c48b2c23c5847edb1c, type: 2}
+  - {fileID: 11400000, guid: 930d0585da1e33e4bbde1c15a705eec9, type: 2}
+  - {fileID: 11400000, guid: a2d759c475cc631488b7a141f4939299, type: 2}
+  - {fileID: 11400000, guid: 35a904ca4a9b6f5498186b4a6f886f5f, type: 2}
+  - {fileID: 11400000, guid: af82149576ce4d8429f3588b3cd30b19, type: 2}
+  - {fileID: 11400000, guid: 5b03d444fb19a3c4492fedba4ce30d54, type: 2}
+  - {fileID: 11400000, guid: 680d83aa6f0643a48b58a4df3131a2ba, type: 2}

@@ -5,7 +5,7 @@ using UnityEditor;
 namespace AmazingAssets.CurvedWorldEditor
 {
     [CustomEditor(typeof(CurvedWorld.CurvedWorldController))]
-    public class CurvedWorldControllerEditor : Editor
+    public class CurvedWorldControllerEditor : UnityEditor.Editor
     {
         #region Component Menu
         [MenuItem("Component/Amazing Assets/Curved World/Controller", false, 511)]
