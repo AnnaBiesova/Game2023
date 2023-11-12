@@ -100,8 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 399111121}
-  _jumpForce: 8
-  _maxInputDeltaInViewportSpace: 0.5
+  _jumpForce: 9
+  _maxInputDeltaInViewportSpace: 0.4
+  _levelPlatformsLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &399111121
 Rigidbody:
   m_ObjectHideFlags: 0

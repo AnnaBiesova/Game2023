@@ -29,7 +29,6 @@ Transform:
   m_Children:
   - {fileID: 122038964432785407}
   - {fileID: 122038965643281090}
-  - {fileID: 122038965746037486}
   - {fileID: 122038964384082294}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -64,7 +63,7 @@ Transform:
   - {fileID: 122038965382248978}
   - {fileID: 122038965761887562}
   m_Father: {fileID: 122038964309333320}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &122038964432785377
 GameObject:
@@ -90,13 +89,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122038964432785377}
-  m_LocalRotation: {x: 0.7128711, y: -0.19470716, z: 0.61155, w: 0.2826849}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456976, z: 0.8754261, w: 0.10938167}
   m_LocalPosition: {x: 0, y: 18.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 122038964309333320}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 140.12, y: -83.1, z: -5.0950003}
+  m_LocalEulerAnglesHint: {x: 150, y: -130, z: 0}
 --- !u!108 &122038964432785406
 Light:
   m_ObjectHideFlags: 0
@@ -258,6 +257,7 @@ GameObject:
   - component: {fileID: 122038965382248981}
   - component: {fileID: 122038965382248980}
   - component: {fileID: 122038965382248979}
+  - component: {fileID: 2587157393855230382}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -273,7 +273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122038965382248983}
   m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 1.5637827, z: -5.0470195}
+  m_LocalPosition: {x: 0, y: 1.0803472, z: -5.1765556}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 122038964384082294}
@@ -303,7 +303,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 5000
+  far clip plane: 1000
   field of view: 70
   orthographic: 1
   orthographic size: 6.1
@@ -364,6 +364,21 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2587157393855230382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122038965382248983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8600e3a9bd16134aa82c4ef2603d66b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fieldOfView: 60
+  aspectInEditor: 0.5625
+  orthoWidthSize: 6.6
 --- !u!1 &122038965643281094
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,8 +406,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122038965643281094}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5637827, z: -5.0470195}
-  m_LocalScale: {x: 4999, y: 4999, z: 4999}
+  m_LocalPosition: {x: 0, y: 1.0803472, z: -5.1765556}
+  m_LocalScale: {x: 999, y: 999, z: 999}
   m_Children: []
   m_Father: {fileID: 122038964309333320}
   m_RootOrder: 1
@@ -474,9 +489,9 @@ MonoBehaviour:
   fogIntensity: 1
   fogAxisMode: 1
   fogLayersMode: 10
-  fogCameraMode: 0
-  fogColorStart: {r: 0.023529412, g: 0, b: 1, a: 1}
-  fogColorEnd: {r: 1.3773584, g: 1.1113299, b: 0.29452932, a: 1}
+  fogCameraMode: 1
+  fogColorStart: {r: 0.5037451, g: 0, b: 1, a: 1}
+  fogColorEnd: {r: 1.5786626, g: 1.380883, b: 0.7545808, a: 1}
   fogColorDuo: 1
   fogDistanceStart: 5
   fogDistanceEnd: 70
@@ -496,7 +511,7 @@ MonoBehaviour:
   categoryDirectional: 1
   directionalIntensity: 1
   directionalFalloff: 1
-  directionalColor: {r: 0.7735849, g: 0.53031915, b: 0.59536046, a: 1}
+  directionalColor: {r: 1, g: 0, b: 0.27419376, a: 1}
   categoryNoise: 1
   noiseIntensity: 0.979
   noiseMin: 0
@@ -513,117 +528,6 @@ MonoBehaviour:
   overrideCamToVolumeDistance: Infinity
   overrideVolumeDistanceFade: 0
   version: 0
---- !u!1 &122038965746037395
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 122038965746037486}
-  - component: {fileID: 122038965746037393}
-  - component: {fileID: 122038965746037392}
-  m_Layer: 0
-  m_Name: Height Fog Override
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &122038965746037486
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122038965746037395}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 51.7}
-  m_LocalScale: {x: 26.76, y: 67.3, z: 20}
-  m_Children: []
-  m_Father: {fileID: 122038964309333320}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &122038965746037393
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122038965746037395}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &122038965746037392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122038965746037395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1c26670b7bd6a47ac695141473ab42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  styledBanner: 0
-  messageNoHeightFogGlobal: 0
-  categoryVolume: 1
-  volumeDistanceFade: 15
-  volumeGizmoColor: {r: 1, g: 1, b: 1, a: 1}
-  categoryScene: 1
-  mainCamera: {fileID: 122038965382248981}
-  mainDirectional: {fileID: 122038964432785406}
-  categoryMode: 1
-  fogMode: 10
-  messagePreset: 0
-  messageTimeOfDay: 0
-  presetMaterial: {fileID: 0}
-  presetDay: {fileID: 0}
-  presetNight: {fileID: 0}
-  timeOfDay: 0
-  categoryFog: 1
-  fogIntensity: 1
-  fogAxisMode: 1
-  fogLayersMode: 10
-  fogCameraMode: 0
-  fogColorStart: {r: 0.5377358, g: 0.07243905, b: 0.023673853, a: 1}
-  fogColorEnd: {r: 1.2214975, g: 1.2214975, b: 1.2214975, a: 1}
-  fogColorDuo: 1
-  fogDistanceStart: -60
-  fogDistanceEnd: 60
-  fogDistanceFalloff: 1
-  fogHeightStart: 0
-  fogHeightEnd: 15
-  fogHeightFalloff: 1
-  farDistanceHeight: 0
-  farDistanceOffset: 0
-  categorySkybox: 1
-  skyboxFogIntensity: 0.452
-  skyboxFogHeight: 1
-  skyboxFogFalloff: 1
-  skyboxFogOffset: 0
-  skyboxFogBottom: 0
-  skyboxFogFill: 0
-  categoryDirectional: 1
-  directionalIntensity: 1
-  directionalFalloff: 1
-  directionalColor: {r: 1, g: 1, b: 1, a: 1}
-  categoryNoise: 1
-  noiseIntensity: 0.5
-  noiseMin: 0
-  noiseMax: 1
-  noiseScale: 30
-  noiseSpeed: {x: 0.5, y: 0.5, z: 0}
-  noiseDistanceEnd: 30
-  categoryAdvanced: 1
-  jitterIntensity: 0
-  styledSpace0: 0
-  version: 0
 --- !u!1 &122038965761887565
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +540,7 @@ GameObject:
   - component: {fileID: 122038965761887560}
   - component: {fileID: 122038965761887563}
   - component: {fileID: 122038965761887561}
+  - component: {fileID: 233756058319195194}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -651,7 +556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122038965761887565}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 1.5637827, z: -5.0470195}
+  m_LocalPosition: {x: 0, y: 1.0803472, z: -5.1765556}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 122038964940927787}
@@ -682,7 +587,7 @@ MonoBehaviour:
     FieldOfView: 70
     OrthographicSize: 6.1
     NearClipPlane: 0.3
-    FarClipPlane: 5000
+    FarClipPlane: 1000
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
@@ -725,3 +630,18 @@ MonoBehaviour:
   xVal: 0
   yVal: 0
   zVal: 0
+--- !u!114 &233756058319195194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122038965761887565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8600e3a9bd16134aa82c4ef2603d66b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fieldOfView: 60
+  aspectInEditor: 0.5625
+  orthoWidthSize: 6.6

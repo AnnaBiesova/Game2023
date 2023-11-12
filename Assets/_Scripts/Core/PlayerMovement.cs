@@ -1,3 +1,4 @@
+using System;
 using _Scripts;
 using _Scripts.Controllers;
 using _Scripts.Core.Input;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 public class PlayerMovement : Singleton<PlayerMovement>
 {
-    private const float _makeIsKinematicDelay = 0.15f;
+    private const float _makeIsKinematicDelay = 0.25f;
     private const float SetStableOnPlatformDuration = 0.2f;
     private const float JumpRotationDuration = 0.1f;
     
@@ -40,6 +41,13 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private void OnDisable()
     {
         this.Unsubscribe<InputData>(EventID.INPUT, HandleInput);
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 nextPos = transform.position;
+        nextPos.z = 0f;
+        transform.position = nextPos;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -103,7 +111,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
         Vector3 nextRotation = new Vector3(0f, yEulerRot, 0f);
         Vector3 nextPos = transform.position;
-        nextPos.z = 0f;
         
         if(Physics.Raycast(nextPos + Vector3.up * 0.5f, Vector3.down, out RaycastHit hit, 1.5f, _levelPlatformsLayerMask))
         {

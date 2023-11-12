@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 399111120, guid: 97d75f20596b09648b884878a1d6c055, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 399111122, guid: 97d75f20596b09648b884878a1d6c055, type: 3}
       propertyPath: _levelPlatformsLayerMask.m_Bits
       value: 256
@@ -57,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8709855728906446092, guid: 97d75f20596b09648b884878a1d6c055, type: 3}
       propertyPath: m_Name
-      value: frog_player
+      value: frog_player Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d75f20596b09648b884878a1d6c055, type: 3}

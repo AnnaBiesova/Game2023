@@ -8,7 +8,7 @@ Shader "Amazing Assets/Curved World/Mobile/Diffuse"
 {
     Properties 
     {
-        [HideInInspector][CurvedWorldBendSettings]	  _CurvedWorldBendSettings("0|1|1", Vector) = (0, 0, 0, 0)
+        [HideInInspector][CurvedWorldBendSettings]	  _CurvedWorldBendSettings("0,8|1|1", Vector) = (0, 0, 0, 0)
 
         _MainTex ("Base (RGB)", 2D) = "white" {}
     }
@@ -22,7 +22,7 @@ Shader "Amazing Assets/Curved World/Mobile/Diffuse"
         #pragma surface surf Lambert noforwardadd vertex:vert addshadow
 
 
-#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+#pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CYLINDRICALTOWER_Z
 #define CURVEDWORLD_BEND_ID_1
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
@@ -79,7 +79,7 @@ Shader "Amazing Assets/Curved World/Mobile/Diffuse"
             #pragma fragment fragScenePickingPass
 
 
-#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+#pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CYLINDRICALTOWER_Z
 #define CURVEDWORLD_BEND_ID_1
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 
@@ -112,7 +112,7 @@ Shader "Amazing Assets/Curved World/Mobile/Diffuse"
             #pragma fragment fragSceneHighlightPass
 
 
-#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+#pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CYLINDRICALTOWER_Z
 #define CURVEDWORLD_BEND_ID_1
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 

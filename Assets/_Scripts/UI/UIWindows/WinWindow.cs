@@ -1,22 +1,39 @@
 using _Scripts.Helpers;
 using _Scripts.UI;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public sealed class WinWindow : UIWindow
 {
     [SerializeField] private CanvasConfig config;
     [SerializeField] private GameObject nextLevelButton;
-
+    [SerializeField] private Image backgroundImage;
+    
     private bool delayedOnce;
 
-    private void OnEnable()
+    private async void OnEnable()
     {
         if (delayedOnce == false)
         {
+            float delayShowingButton = config.DelayShowingNextLevelButton;
+            
+            Color fromBackgroundColor = backgroundImage.color;
+            fromBackgroundColor.a = 0f;
+            backgroundImage.DOColor(fromBackgroundColor, delayShowingButton).From();
+            
             nextLevelButton.SetActive(false);
-            DelayAction.WaitForSecondsRealtime(() => nextLevelButton.SetActive(true), config.DelayShowingNextLevelButton);
-
             delayedOnce = true;
+
+            await UniTask.WaitForSeconds(delayShowingButton);
+
+            nextLevelButton.SetActive(true);
+            //Tween button scale from zero to 1
+            nextLevelButton.transform.DOScale(Vector3.zero, delayShowingButton * 0.5f).SetEase(Ease.OutBack).From();
+            
+            //DelayAction.WaitForSecondsRealtime(() => nextLevelButton.SetActive(true), config.DelayShowingNextLevelButton).Forget();
+
         }
     }
 }

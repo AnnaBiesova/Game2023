@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: white
-  m_Shader: {fileID: 4800000, guid: 08ed0d9dfc7b9d54480990896ab62fe8, type: 3}
-  m_ShaderKeywords: CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_TYPE_CYLINDRICALTOWER_X
+  m_Shader: {fileID: 4800000, guid: cd83cf70b9e641149b0f60fc82851812, type: 3}
+  m_ShaderKeywords: CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_TYPE_CYLINDRICALTOWER_Z
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -75,6 +75,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _CurvedWorldBendSettings: {r: 7, g: 1, b: 0, a: 0}
+    - _CurvedWorldBendSettings: {r: 8, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
