@@ -24,10 +24,7 @@ namespace _Scripts.UI
 
             //LevelOrder.Instance.LoadHubScene();
             
-            /*
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-
-            DestroyAllEntities();*/
         }
     }
 }

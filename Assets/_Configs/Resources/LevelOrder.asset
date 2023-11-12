@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelOrder
   m_EditorClassIdentifier: 
   debugLog: 0
-  hubSceneName: Choice_Game
+  hubSceneName: 
   levelToStartOnSecondLap: 1
   randomizeSecondLapLevels: 0
   _levelConfigs:
@@ -21,7 +21,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5fe8de520cee82c48b2c23c5847edb1c, type: 2}
   - {fileID: 11400000, guid: 930d0585da1e33e4bbde1c15a705eec9, type: 2}
   - {fileID: 11400000, guid: a2d759c475cc631488b7a141f4939299, type: 2}
-  - {fileID: 11400000, guid: 35a904ca4a9b6f5498186b4a6f886f5f, type: 2}
-  - {fileID: 11400000, guid: af82149576ce4d8429f3588b3cd30b19, type: 2}
-  - {fileID: 11400000, guid: 5b03d444fb19a3c4492fedba4ce30d54, type: 2}
-  - {fileID: 11400000, guid: 680d83aa6f0643a48b58a4df3131a2ba, type: 2}

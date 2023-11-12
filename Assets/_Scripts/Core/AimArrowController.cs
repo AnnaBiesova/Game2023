@@ -26,13 +26,16 @@ public class AimArrowController : MonoBehaviour
 
     private void HandleInput(InputData data)
     {
-        if (data.State == EInputState.Start)
+        if (_PlayerMovement.CanJump == false)
         {
-            PositionArrowAtPlayer();
+            SetArrowActiveState(false);
+            
+            return;
         }
-
+        
         if (data.State == EInputState.Continue)
         {
+            PositionArrowAtPlayer();
             CheckArrowActivationWithInputDirection(data.Direction);
             RotateArrow(data.Direction);
             ScaleArrowWithJumpForce();

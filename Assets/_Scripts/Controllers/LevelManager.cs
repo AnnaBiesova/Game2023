@@ -141,9 +141,6 @@ namespace _Scripts.Controllers
 
         private void FixedUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.W)) SetLevelEnd(true);
-            if (Input.GetKeyDown(KeyCode.R)) RestartButton.RestartLevel();
-
             if(haveRules == false) return;
 
             if (LevelRules.LevelProgressInfo.GetLevelInProgress() == true)
@@ -173,6 +170,10 @@ namespace _Scripts.Controllers
         
         private void CreateLevelRules()
         {
+            /*if(levelConfig == null) return;
+            if(levelConfig.LevelRules == null) return;
+            if(levelConfig.LevelRules.LevelRulePrefab == null) return;*/
+            
             LevelRules = Instantiate(levelConfig.LevelRules.LevelRulePrefab).GetComponent<LevelRulesBase>();
 
             if (LevelRules == null)
@@ -217,7 +218,8 @@ namespace _Scripts.Controllers
             
             /*RewardForLevel = win
                 ? LevelConfig.WinMoneyReward
-                : LevelConfig.LoseMoneyReward;*/
+                : Leve
+                lConfig.LoseMoneyReward;*/
 
             this.OnEvent(win ? EventID.LEVEL_DONE : EventID.LEVEL_FAIL);
 

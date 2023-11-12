@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40e40665ae2c3345949375d88f4a2a6, type: 3}
   m_Name: CanvasConfig
   m_EditorClassIdentifier: 
-  delayShowingWinWindow: 0
-  delayShowingLoseWindow: 0
+  delayShowingWinWindow: 0.25
+  delayShowingLoseWindow: 2
   delayShowingPlayerProgress: 0
   delayShowingNextLevelButton: 1.5
   startingWindow: 1
