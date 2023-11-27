@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using _Configs.ScriptableObjectsDeclarations.Configs.LevelConfigs;
 using _Scripts.Controllers;
-using _Scripts.Helpers;
 using _Scripts.Patterns;
 using _Scripts.Services;
 using DG.Tweening;
@@ -35,10 +35,6 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
         private int debugSceneToLoadBuildIndex = -1;
         [NonSerialized] private int lastLevelIndex = 0;
 
-        private List<string> GetScenesInBuildSettingsNames()
-        {
-            return ScenesDropdown.GetScenesInBuildSettings();
-        }
 
         protected override void OnInitialize()
         {
@@ -65,7 +61,6 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
             if (debugSceneToLoadBuildIndex != -1)
             {
                 BaseLevelConfig debugConfig = Instantiate(_levelConfigs[levelConfigIndex]);
-                debugConfig.SetScene(ScenesDropdown.GetSceneNameFromIndex(debugSceneToLoadBuildIndex));
 
                 debugSceneToLoadBuildIndex = -1;
             
@@ -136,13 +131,9 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
 
         public void LoadNextGameLevel(float loadDelay = 0f)
         {
-            DelayAction.WaitForSecondsRealtime(
-                () =>
-                {
-                    OnBeforeLevelLoad();
+            OnBeforeLevelLoad();
 
-                    SceneManager.LoadScene(LevelOrder.Instance.GetLevelConfig(SaveManager.LevelForPlayer, true).Scene);
-                }, loadDelay).Forget();
+            SceneManager.LoadScene(LevelOrder.Instance.GetLevelConfig(SaveManager.LevelForPlayer, true).Scene);
         }
 
         public void LoadLevelByNumber(int loadLevelIndex)
@@ -150,16 +141,6 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
             OnBeforeLevelLoad();
 
             SceneManager.LoadScene(LevelOrder.Instance.GetLevelConfig(loadLevelIndex, true).Scene);
-        }
-
-        public void LoadHubScene(float loadDelay = 0f)
-        {
-            DelayAction.WaitForSecondsRealtime(
-                () =>
-                {
-                    OnBeforeLevelLoad();
-                    SceneManager.LoadScene(hubSceneName, LoadSceneMode.Single);
-                }, loadDelay).Forget();
         }
 
         private void OnBeforeLevelLoad()

@@ -1,6 +1,5 @@
-using _Scripts.Helpers;
+using System.Collections;
 using _Scripts.UI;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,15 +24,20 @@ public sealed class WinWindow : UIWindow
             
             nextLevelButton.SetActive(false);
             delayedOnce = true;
-
-            await UniTask.WaitForSeconds(delayShowingButton);
-
-            nextLevelButton.SetActive(true);
-            //Tween button scale from zero to 1
-            nextLevelButton.transform.DOScale(Vector3.zero, delayShowingButton * 0.5f).SetEase(Ease.OutBack).From();
+            
+            StartCoroutine(Wait(delayShowingButton));
             
             //DelayAction.WaitForSecondsRealtime(() => nextLevelButton.SetActive(true), config.DelayShowingNextLevelButton).Forget();
 
         }
+    }
+
+    IEnumerator Wait(float delayShowingButton)
+    {
+        yield return new WaitForSeconds(delayShowingButton);
+
+        nextLevelButton.SetActive(true);
+        //Tween button scale from zero to 1
+        nextLevelButton.transform.DOScale(Vector3.zero, delayShowingButton * 0.5f).SetEase(Ease.OutBack).From();
     }
 }

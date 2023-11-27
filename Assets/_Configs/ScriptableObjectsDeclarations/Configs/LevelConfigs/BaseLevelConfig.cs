@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Reflection;
 using _Scripts.Controllers.Rules;
-using _Scripts.Helpers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -56,7 +55,7 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs.LevelConfigs
 #if UNITY_EDITOR
             LevelOrder.Instance.SetDebugLevelToLoad(this);
 
-            if (Application.isPlaying)
+            /*if (Application.isPlaying)
             {
                 SceneManager.LoadSceneAsync(ScenesDropdown.GetSceneNameFromIndex(0));
             }
@@ -64,7 +63,7 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs.LevelConfigs
             {
                 EditorSceneManager.OpenScene(ScenesDropdown.GetSceneNameFromIndex(0));
                 EditorApplication.EnterPlaymode();
-            }
+            }*/
 #endif
         }
 

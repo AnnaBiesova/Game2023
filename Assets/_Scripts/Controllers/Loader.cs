@@ -31,14 +31,7 @@ namespace _Scripts.Controllers
         {
             if (!IsCreatedOnLevel)
             {
-                if (loadHub)
-                {
-                    LevelOrder.Instance.LoadHubScene();   
-                }
-                else
-                {
-                    LevelOrder.Instance.LoadNextGameLevel();
-                }
+                LevelOrder.Instance.LoadNextGameLevel();
             }
         }
 

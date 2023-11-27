@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Scripts.Helpers;
 using UnityEngine;
 
 namespace _Configs.ScriptableObjectsDeclarations.Configs.GameModesConfigs
@@ -24,7 +23,7 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs.GameModesConfigs
         
         private List<string> GetScenesInBuildSettingsNames()
         {
-            return ScenesDropdown.GetScenesInBuildSettings();
+            return new List<string>();
         }
     }
 }

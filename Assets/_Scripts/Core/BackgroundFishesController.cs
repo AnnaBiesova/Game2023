@@ -1,7 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
 using Random = UnityEngine.Random; // Make sure to include this for UniTask
 
 public class BackgroundFishesController : MonoBehaviour
@@ -33,7 +33,7 @@ public class BackgroundFishesController : MonoBehaviour
             InitNewFish(child);
         }
         
-        SpawnFishesPeriodically().Forget();
+        StartCoroutine(SpawnFishesPeriodically());
     }
 
     private void Update()
@@ -62,14 +62,15 @@ public class BackgroundFishesController : MonoBehaviour
             }
         }
     }
-
-    private async UniTaskVoid SpawnFishesPeriodically()
+    
+    private IEnumerator SpawnFishesPeriodically()
     {
         while (true)
         {
             float delay = UnityEngine.Random.Range(_spawnNewDelayRange.x, _spawnNewDelayRange.y);
-            await UniTask.Delay(TimeSpan.FromSeconds(delay));
-
+            
+            yield return new WaitForSeconds(delay);
+            
             SpawnFish();
         }
     }

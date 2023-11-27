@@ -1,10 +1,10 @@
 using System;
+using System.Collections;
 using _Scripts;
 using _Scripts.Controllers;
 using _Scripts.Core.Input;
 using _Scripts.Patterns;
 using _Scripts.Patterns.Events;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -18,6 +18,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] private float _jumpForce = 50f;
     [SerializeField] private float _maxInputDeltaInViewportSpace = 0.25f;
     [SerializeField] private LayerMask _levelPlatformsLayerMask;
+    [SerializeField] private Vector3 _rotationOffset = Vector3.zero;
     
     private Camera _camera;
     
@@ -25,12 +26,14 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private float _lastNormalizedJumpForce01;
     private float _lastJumpTime;
     private bool _isInJumpProcess;
+    private float _startingZPos;
     
     public bool CanJump => LevelManager.LevelInProgress && _isInJumpProcess == false;
 
     private void Awake()
     {
         _camera = Camera.main;
+        _startingZPos = transform.position.z;
     }
 
     private void OnEnable()
@@ -46,7 +49,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private void FixedUpdate()
     {
         Vector3 nextPos = transform.position;
-        nextPos.z = 0f;
+        nextPos.z = _startingZPos;
         transform.position = nextPos;
     }
 
@@ -67,7 +70,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
             }
             
             _rigidbody.isKinematic = true;
-            SetPositionOnPlatform();
+            StartCoroutine(SetPositionOnPlatform());
         }
     }
 
@@ -88,7 +91,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
             }
 
             _rigidbody.isKinematic = true;
-            SetPositionOnPlatform();
+            StartCoroutine(SetPositionOnPlatform());
         }
     }
 
@@ -104,12 +107,12 @@ public class PlayerMovement : Singleton<PlayerMovement>
         }
     }
 
-    private async void SetPositionOnPlatform()
+    private IEnumerator SetPositionOnPlatform()
     {
         bool lookToRight = transform.position.x < 0f;
         float yEulerRot = lookToRight ? 90f : -90f;
 
-        Vector3 nextRotation = new Vector3(0f, yEulerRot, 0f);
+        Vector3 nextRotation = new Vector3(0f, yEulerRot, 0f) + _rotationOffset;
         Vector3 nextPos = transform.position;
         
         if(Physics.Raycast(nextPos + Vector3.up * 0.5f, Vector3.down, out RaycastHit hit, 1.5f, _levelPlatformsLayerMask))
@@ -123,7 +126,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
         transform.DOMove(nextPos, SetStableOnPlatformDuration);
         transform.DORotate(nextRotation, SetStableOnPlatformDuration);
 
-        await UniTask.WaitForSeconds(SetStableOnPlatformDuration);
+        yield return new WaitForSeconds(SetStableOnPlatformDuration);
 
         _isInJumpProcess = false;
     }
@@ -165,7 +168,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
         bool jumpToRight = _lastJumpForce.x > 0f;
         float yEulerRot = jumpToRight ? 90f : -90f;
         
-        transform.DORotate(new Vector3(0f, yEulerRot, 0f), JumpRotationDuration);
+        transform.DORotate(new Vector3(0f, yEulerRot, 0f) + _rotationOffset, JumpRotationDuration);
         
         _isInJumpProcess = true;
     }

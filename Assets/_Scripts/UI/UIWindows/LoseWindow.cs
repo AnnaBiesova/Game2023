@@ -1,4 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,17 +26,22 @@ namespace _Scripts.UI
 				restartButton.SetActive(false);
 				delayedOnce = true;
 
-				await UniTask.WaitForSeconds(delayShowingButton);
-
-				restartButton.SetActive(true);
-				
-				//Tween button scale from zero to 1
-				restartButton.transform.DOScale(Vector3.zero, delayShowingButton * 0.5f)
-					.SetEase(Ease.OutBack).From();
+				StartCoroutine(Wait(delayShowingButton));
 
 				//DelayAction.WaitForSecondsRealtime(() => nextLevelButton.SetActive(true), config.DelayShowingNextLevelButton).Forget();
 
 			}
+		}
+
+		IEnumerator Wait(float delayShowingButton)
+		{
+			yield return new WaitForSeconds(delayShowingButton);
+
+			restartButton.SetActive(true);
+
+			//Tween button scale from zero to 1
+			restartButton.transform.DOScale(Vector3.zero, delayShowingButton * 0.5f)
+				.SetEase(Ease.OutBack).From();
 		}
 	}
 }

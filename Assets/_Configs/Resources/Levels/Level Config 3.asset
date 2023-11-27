@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Level Config 3
   m_EditorClassIdentifier: 
   rules: {fileID: 6019338785249976572, guid: ecabe7fca3849144592e1f3ac9513ef4, type: 3}
-  scene: Oleksandr 1
+  scene: Anna 2
   WinMoneyReward: 0
   LoseMoneyReward: 0
