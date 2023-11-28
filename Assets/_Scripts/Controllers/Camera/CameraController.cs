@@ -20,18 +20,11 @@ namespace _Scripts.Core
 
 		private void Awake()
 		{
-			VirtualCameraChanger.OnCameraChanged += OnVirtualCameraChanged;
-
 			vCam.Follow = PlayerMovement.Instance.transform;
 			
 			vCam.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
 		}
 
-		private void OnDestroy()
-		{
-			VirtualCameraChanger.OnCameraChanged -= OnVirtualCameraChanged;
-		}
-		
 		private void LateUpdate()
 		{
 			if (follow) FollowTarget();
@@ -39,29 +32,6 @@ namespace _Scripts.Core
 			Vector3 camPos = vCam.transform.position;
 			camPos.x = 0f;
 			vCam.transform.position = camPos;
-		}
-
-		private void OnVirtualCameraChanged(CinemachineVirtualCamera virtualCamera)
-		{
-			vCam.CopyComponentSettings<CinemachineTransposer>(virtualCamera);
-			vCam.CopyComponentSettings<CinemachineComposer>(virtualCamera);
-			
-			cameraAimRefVelocity = Vector3.zero;
-			
-			vCam = virtualCamera;
-			vCam.LookAt = aimTarget;
-		}
-
-		
-		public void SetAimTargetPos(Vector3 aimTargetPos, bool instant)
-		{
-			nextAimTargetPos = aimTargetPos;
-			
-			if (instant)
-			{
-				aimTarget.position = nextAimTargetPos;
-				vCam.transform.rotation = Quaternion.LookRotation(nextAimTargetPos - vCam.transform.position, Vector3.up);
-			}
 		}
 
 		private void FollowTarget()

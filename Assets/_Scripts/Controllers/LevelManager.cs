@@ -5,9 +5,7 @@ using _Configs.ScriptableObjectsDeclarations.Configs.LevelConfigs;
 using _Scripts.Controllers.Rules;
 using _Scripts.Patterns;
 using _Scripts.Patterns.Events;
-using _Scripts.Patterns.SharedData;
 using _Scripts.Services;
-using _Scripts.UI;
 using UnityEngine;
 
 
@@ -64,9 +62,6 @@ namespace _Scripts.Controllers
         private BaseLevelConfig levelConfig;
         private OtherSettingsSO otherSettingsSo;
 
-        private List<Action<SharedData>> waitingInitialize = new List<Action<SharedData>>();
-        private SharedData data;
-
         public LevelRulesBase LevelRules { get; private set; }
         public BaseLevelConfig LevelConfig => levelConfig;
 
@@ -107,16 +102,8 @@ namespace _Scripts.Controllers
             otherSettingsSo = OtherSettingsSO.Instance;
             
             CreateLevelRules();
-            
-            this.Subscribe<Action<SharedData>>(EventID.SHADED_DATA_REQUEST, HandleSharedDataRequest);
-            
         }
         
-        private void OnDestroy()
-        {
-            this.Unsubscribe<Action<SharedData>>(EventID.SHADED_DATA_REQUEST, HandleSharedDataRequest);
-        }
-
         private void OnApplicationQuit()
         {
             string lastSessionTimeString = DateTime.UtcNow.ToBinary().ToString();
@@ -127,10 +114,7 @@ namespace _Scripts.Controllers
 
         private void Start()
         {
-            CreateLevelData();
-            
             SaveManager.MoneyCollectedOnLevel = 0;
-            SettingsButton.settingsOpened = false;
 
             levelInProgress = true;
             
@@ -150,19 +134,6 @@ namespace _Scripts.Controllers
             }
         }
         
-        private void HandleSharedDataRequest(Action<SharedData> param)
-        {
-            if (data == null) this.waitingInitialize.Add(param);
-            else param.Invoke(data);
-        }
-
-        private void CreateLevelData()
-        {
-            this.data = SharedData.Generate();
-            this.waitingInitialize.ForEach(x => x.Invoke(data));
-            this.waitingInitialize.Clear();
-        }
-
         public static void SetLevelInProgress(bool inProgress)
         {
             levelInProgress = inProgress;

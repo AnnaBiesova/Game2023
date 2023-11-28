@@ -18,7 +18,6 @@ namespace _Scripts.UI
             started = true;
             
             VibrationController.Instance.Light();
-            SoundController.Instance.PlaySound(eSoundType.buttonPress);
 
             transform.SetParent(parentAfterPress, false);
             this.OnEvent(EventID.LEVEL_START);

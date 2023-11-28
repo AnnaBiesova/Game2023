@@ -8,7 +8,6 @@ using _Scripts.Services;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 #if UNITY_EDITOR
@@ -21,12 +20,12 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
     public class LevelOrder : SingletonScriptableObject<LevelOrder>
     {
         [SerializeField] private bool debugLog;
-        
+
         [SerializeField] private string hubSceneName;
-        
+
         [Min(1)] [SerializeField] private int levelToStartOnSecondLap = 6;
         [SerializeField] private bool randomizeSecondLapLevels = false;
-        
+
         private BaseLevelConfig debugLoadLevelToTest;
 
         [Space]
@@ -44,7 +43,7 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
             {
                 SetDebugLevelToLoad(null);
             }
-            
+
             debugSceneToLoadBuildIndex = -1;
         }
 
@@ -53,24 +52,25 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
 #if UNITY_EDITOR
             if (debugLoadLevelToTest != null) return debugLoadLevelToTest;
 #endif
-            
+
             int levelConfigIndex = CalculateLevelCurrentConfigIndex(levelNumber, setNextLevel);
-            
-            if(setNextLevel) PlayerPrefs.SetInt(PrefsNames.LAST_LEVEL_CONFIG, levelConfigIndex);
+
+            if (setNextLevel) PlayerPrefs.SetInt(PrefsNames.LAST_LEVEL_CONFIG, levelConfigIndex);
 
             if (debugSceneToLoadBuildIndex != -1)
             {
                 BaseLevelConfig debugConfig = Instantiate(_levelConfigs[levelConfigIndex]);
 
                 debugSceneToLoadBuildIndex = -1;
-            
+
                 return debugConfig;
             }
 
             if (debugLog)
             {
                 Debug.LogWarning($"Current player level: {SaveManager.LevelForPlayer}");
-                Debug.LogWarning($"Current level config index: {levelConfigIndex} and name: {_levelConfigs[levelConfigIndex].name}");
+                Debug.LogWarning(
+                    $"Current level config index: {levelConfigIndex} and name: {_levelConfigs[levelConfigIndex].name}");
             }
 
             return _levelConfigs[levelConfigIndex];
@@ -81,7 +81,7 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
             debugLoadLevelToTest = levelConfig;
 
             if (levelConfig == null) return;
-            
+
             PlayerPrefs.SetInt(DebugInternalSelfControlledPrefsNames.DEBUG_LOAD_DEBUG_LEVEL, 1);
             Debug.LogWarning($"debugLoadLevelToTest = {debugLoadLevelToTest.name} _ {Time.time}");
         }
@@ -90,7 +90,7 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
         {
             levelNumber--;
             int levelConfigIndex;
-            
+
             if (randomizeSecondLapLevels && LevelManager.LevelIsRestarted)
             {
                 levelConfigIndex = PlayerPrefs.GetInt(PrefsNames.LAST_LEVEL_CONFIG, 0);
@@ -150,10 +150,10 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
 
             DOTween.KillAll();
         }
-        
+
         public int GetLevelLap() => Mathf.CeilToInt(SaveManager.LevelForPlayer / (float)_levelConfigs.Count);
 
-        public void SetDebugNextScene(int sceneIndex)  
+        public void SetDebugNextScene(int sceneIndex)
         {
             debugSceneToLoadBuildIndex = sceneIndex;
         }
@@ -162,30 +162,13 @@ namespace _Configs.ScriptableObjectsDeclarations.Configs
         {
             return SceneManager.GetActiveScene().buildIndex;
         }
-    
 
-        #region Odin Inspector
 
-#if UNITY_EDITOR
-        private void OnBeginListElement(int index)
+        [Serializable]
+        public class LoadAnyLevelParams
         {
-            //SirenixEditorGUI.BeginBox("Level: " + (index + 1));
+            public bool load = false;
+            [Range(1, 998)] public int level = 1;
         }
-
-        private void OnEndListElement(int index)
-        {
-            //SirenixEditorGUI.EndBox();
-        }
-#endif
-
-
-        #endregion
-    }
-
-    [Serializable]
-    public class LoadAnyLevelParams
-    {
-        public bool load = false;
-        [Range(1, 998)] public int level = 1;
     }
 }
